@@ -1,841 +1,804 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jose Aristides Cardona | Developer & Data Analyst Portfolio</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
- 
-  :root {
-    --bg-primary: #0a0e1a;
-    --bg-secondary: #111827;
-    --bg-card: #1a2235;
-    --bg-card-hover: #1f2a40;
-    --accent: #00c3ff;
-    --accent-dim: #0088b3;
-    --accent-glow: rgba(0, 195, 255, 0.15);
-    --green: #00e5a0;
-    --purple: #8b5cf6;
-    --orange: #f59e0b;
-    --red: #ef4444;
-    --text-primary: #e2e8f0;
-    --text-secondary: #94a3b8;
-    --text-dim: #64748b;
-    --border: #1e293b;
-  }
- 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
- 
-  html { scroll-behavior: smooth; }
- 
-  body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
- 
-  /* ===== HERO ===== */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-  }
- 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background:
-      radial-gradient(ellipse at 20% 50%, rgba(0, 195, 255, 0.06) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(139, 92, 246, 0.04) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 80%, rgba(0, 229, 160, 0.03) 0%, transparent 50%);
-    animation: drift 20s ease-in-out infinite;
-  }
- 
-  @keyframes drift {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(2%, -1%) rotate(1deg); }
-    66% { transform: translate(-1%, 2%) rotate(-1deg); }
-  }
- 
-  .hero-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    padding: 2rem;
-    max-width: 800px;
-  }
- 
-  .hero-label {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid var(--accent-dim);
-    padding: 0.4rem 1.2rem;
-    border-radius: 20px;
-    margin-bottom: 1.5rem;
-  }
- 
-  .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(135deg, #e2e8f0, #00c3ff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
- 
-  .hero-subtitle {
-    font-size: 1.15rem;
-    color: var(--text-secondary);
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    font-weight: 300;
-  }
- 
-  .hero-tags {
-    display: flex;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 2.5rem;
-  }
- 
-  .hero-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    padding: 0.35rem 0.8rem;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--text-secondary);
-  }
- 
-  .hero-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-  }
- 
-  .hero-links a {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.5rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s;
-  }
- 
-  .btn-primary {
-    background: var(--accent);
-    color: var(--bg-primary);
-  }
-  .btn-primary:hover { background: #33cfff; box-shadow: 0 0 20px var(--accent-glow); }
- 
-  .btn-outline {
-    border: 1px solid var(--border);
-    color: var(--text-primary);
-    background: transparent;
-  }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
- 
-  .scroll-indicator {
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    animation: bounce 2s infinite;
-    color: var(--text-dim);
-    font-size: 0.75rem;
-    letter-spacing: 2px;
-  }
- 
-  @keyframes bounce {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(8px); }
-  }
- 
-  /* ===== SECTION LAYOUT ===== */
-  section { padding: 5rem 2rem; }
- 
-  .container { max-width: 1100px; margin: 0 auto; }
- 
-  .section-header {
-    text-align: center;
-    margin-bottom: 3.5rem;
-  }
- 
-  .section-header h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
- 
-  .section-header p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-  }
- 
-  .accent-line {
-    width: 50px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--purple));
-    margin: 1rem auto 0;
-    border-radius: 2px;
-  }
- 
-  /* ===== ABOUT ===== */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-  }
- 
-  .about-text { font-size: 0.95rem; color: var(--text-secondary); }
-  .about-text p { margin-bottom: 1rem; }
- 
-  .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-  }
- 
-  .stat-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.2rem;
-    text-align: center;
-    transition: border-color 0.3s;
-  }
-  .stat-card:hover { border-color: var(--accent-dim); }
- 
-  .stat-number {
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--accent);
-    display: block;
-  }
- 
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--text-dim);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 0.3rem;
-  }
- 
-  /* ===== PROJECTS ===== */
-  .projects-section { background: var(--bg-secondary); }
- 
-  .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    transition: all 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
- 
-  .project-card:hover {
-    border-color: var(--accent-dim);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  }
- 
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 4px; height: 100%;
-    border-radius: 4px 0 0 4px;
-  }
- 
-  .project-card:nth-child(1)::before { background: var(--red); }
-  .project-card:nth-child(2)::before { background: var(--accent); }
-  .project-card:nth-child(3)::before { background: var(--purple); }
-  .project-card:nth-child(4)::before { background: var(--green); }
- 
-  .project-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
- 
-  .project-title {
-    font-size: 1.35rem;
-    font-weight: 600;
-  }
- 
-  .project-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    padding: 0.3rem 0.7rem;
-    border-radius: 20px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    white-space: nowrap;
-  }
- 
-  .badge-cyber { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
-  .badge-data { background: rgba(0, 195, 255, 0.12); color: var(--accent); border: 1px solid rgba(0, 195, 255, 0.3); }
-  .badge-infra { background: rgba(139, 92, 246, 0.12); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.3); }
-  .badge-network { background: rgba(0, 229, 160, 0.12); color: var(--green); border: 1px solid rgba(0, 229, 160, 0.3); }
- 
-  .project-desc {
-    color: var(--text-secondary);
-    font-size: 0.92rem;
-    margin-bottom: 1.2rem;
-    line-height: 1.7;
-  }
- 
-  .project-highlights {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 0.8rem;
-    margin-bottom: 1.2rem;
-  }
- 
-  .highlight {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-  }
- 
-  .highlight-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
- 
-  .project-tech {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
- 
-  .tech-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    padding: 0.25rem 0.6rem;
-    background: rgba(0, 195, 255, 0.08);
-    border: 1px solid rgba(0, 195, 255, 0.15);
-    border-radius: 4px;
-    color: var(--accent);
-  }
- 
-  /* ===== SKILLS ===== */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-  }
- 
-  .skill-category {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-  }
- 
-  .skill-category h3 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: var(--accent);
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
- 
-  .skill-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
- 
-  .skill-item {
-    font-size: 0.82rem;
-    padding: 0.3rem 0.7rem;
-    background: var(--bg-primary);
-    border-radius: 6px;
-    color: var(--text-secondary);
-    border: 1px solid transparent;
-    transition: all 0.2s;
-  }
- 
-  .skill-item:hover {
-    border-color: var(--accent-dim);
-    color: var(--text-primary);
-  }
- 
-  /* ===== CONTACT ===== */
-  .contact-section { background: var(--bg-secondary); }
- 
-  .contact-content {
-    text-align: center;
-    max-width: 500px;
-    margin: 0 auto;
-  }
- 
-  .contact-content p {
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-  }
- 
-  .contact-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
- 
-  .contact-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.3rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-primary);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: all 0.3s;
-  }
- 
-  .contact-link:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: var(--accent-glow);
-  }
- 
-  /* ===== FOOTER ===== */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--border);
-  }
- 
-  /* ===== NAV ===== */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 1rem 2rem;
-    background: rgba(10, 14, 26, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
- 
-  .nav-logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--accent);
-  }
- 
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
- 
-  .nav-links a {
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.2s;
-  }
- 
-  .nav-links a:hover { color: var(--accent); }
- 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 768px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-    .project-header { flex-direction: column; }
-    .hero h1 { font-size: 2.2rem; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jose Aristides Cardona — Finance × Cybersecurity × AI</title>
+  <meta name="description" content="Jose Aristides Cardona — Finance background, cybersecurity specialist, AI-powered developer. Melbourne, AU." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:      #080810;
+      --bg2:     #0f0f1a;
+      --card:    #13131f;
+      --card2:   #1c1c2e;
+      --purple:  #7c3aed;
+      --purple2: #9d5cf5;
+      --gold:    #f59e0b;
+      --gold2:   #fbbf24;
+      --green:   #10b981;
+      --red:     #ef4444;
+      --text:    #f0f0f5;
+      --text2:   #94a3b8;
+      --text3:   #4b5563;
+      --border:  #1f1f35;
+      --glow-p:  rgba(124,58,237,0.15);
+      --glow-g:  rgba(245,158,11,0.12);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NOISE TEXTURE ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity: 0.4;
+    }
+
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 18px 36px;
+      background: rgba(8,8,16,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700; letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--purple2); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { color: var(--text2); font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--purple); color: #fff;
+      padding: 8px 18px; border-radius: 8px;
+      font-size: 0.82rem; font-weight: 600; transition: all 0.2s;
+    }
+    .nav-cta:hover { background: var(--purple2); box-shadow: 0 0 20px var(--glow-p); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 0 60px; position: relative;
+    }
+    .hero::before {
+      content: ''; position: absolute;
+      top: -200px; left: -200px; width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute;
+      bottom: -100px; right: -100px; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,158,11,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 760px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--purple2);
+      border: 1px solid rgba(124,58,237,0.3);
+      background: rgba(124,58,237,0.08);
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 24px;
+    }
+    .hero-eyebrow::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 4.6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 8px;
+    }
+    .hero-name { color: var(--text); }
+    .hero-tagline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    }
+    .tag-finance { color: var(--gold); }
+    .tag-sep { color: var(--text3); font-weight: 300; }
+    .tag-cyber { color: var(--green); }
+    .tag-ai { color: var(--purple2); }
+
+    .hero-desc {
+      font-size: 1.05rem; color: var(--text2); max-width: 580px;
+      line-height: 1.75; margin-bottom: 36px;
+    }
+    .hero-desc strong { color: var(--text); font-weight: 600; }
+
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--purple); color: #fff;
+      padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { background: var(--purple2); box-shadow: 0 4px 24px var(--glow-p); transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border); color: var(--text2);
+      padding: 12px 24px; border-radius: 10px; font-weight: 500; font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--purple); color: var(--text); }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(245,158,11,0.3); color: var(--gold);
+      background: rgba(245,158,11,0.06);
+      padding: 12px 24px; border-radius: 10px; font-weight: 500; font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-gold:hover { background: rgba(245,158,11,0.12); box-shadow: 0 4px 20px var(--glow-g); }
+
+    .hero-stats { display: flex; gap: 36px; flex-wrap: wrap; }
+    .stat { }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem; font-weight: 800; letter-spacing: -1px;
+    }
+    .stat-num.purple { color: var(--purple2); }
+    .stat-num.gold { color: var(--gold); }
+    .stat-num.green { color: var(--green); }
+    .stat-label { font-size: 0.75rem; color: var(--text3); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    /* ── SECTION BASE ── */
+    section { padding: 80px 0; }
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple2); margin-bottom: 12px;
+    }
+    .section-heading {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800;
+      letter-spacing: -1px; margin-bottom: 8px;
+    }
+    .section-sub { color: var(--text2); font-size: 0.95rem; margin-bottom: 40px; max-width: 560px; }
+    .divider { height: 1px; background: var(--border); margin: 0; }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .about-text { color: var(--text2); font-size: 0.95rem; line-height: 1.8; }
+    .about-text p { margin-bottom: 16px; }
+    .about-text strong { color: var(--text); }
+    .about-text .highlight-gold { color: var(--gold); font-weight: 600; }
+    .about-text .highlight-purple { color: var(--purple2); font-weight: 600; }
+    .about-text .highlight-green { color: var(--green); font-weight: 600; }
+
+    .about-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .pill {
+      font-size: 0.8rem; font-weight: 500; padding: 5px 14px; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--text2);
+    }
+    .pill.gold { border-color: rgba(245,158,11,0.3); color: var(--gold); background: rgba(245,158,11,0.06); }
+    .pill.purple { border-color: rgba(124,58,237,0.3); color: var(--purple2); background: rgba(124,58,237,0.06); }
+    .pill.green { border-color: rgba(16,185,129,0.3); color: var(--green); background: rgba(16,185,129,0.06); }
+
+    .timeline { display: flex; flex-direction: column; gap: 20px; }
+    .tl-item {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 20px;
+      border-left: 3px solid var(--border);
+      transition: border-left-color 0.3s;
+    }
+    .tl-item:hover { border-left-color: var(--purple); }
+    .tl-item.gold { border-left-color: var(--gold); }
+    .tl-item.green { border-left-color: var(--green); }
+    .tl-item.purple { border-left-color: var(--purple); }
+    .tl-year { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text3); margin-bottom: 4px; }
+    .tl-role { font-weight: 600; font-size: 0.9rem; margin-bottom: 2px; }
+    .tl-place { font-size: 0.8rem; color: var(--text2); }
+
+    /* ── AI STACK ── */
+    .ai-section { background: var(--bg2); }
+    .ai-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .ai-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px; transition: all 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .ai-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    }
+    .ai-card.claude::before { background: linear-gradient(90deg, #d97706, #f59e0b); }
+    .ai-card.gemini::before { background: linear-gradient(90deg, #4285f4, #34a853, #fbbc05, #ea4335); }
+    .ai-card.openai::before { background: linear-gradient(90deg, #10a37f, #1a7f64); }
+    .ai-card:hover { transform: translateY(-3px); border-color: rgba(124,58,237,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+
+    .ai-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+    .ai-logo {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--card2); display: flex; align-items: center; justify-content: center;
+      overflow: hidden; flex-shrink: 0;
+    }
+    .ai-logo img { width: 24px; height: 24px; object-fit: contain; }
+    .ai-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; }
+    .ai-provider { font-size: 0.75rem; color: var(--text3); }
+    .ai-desc { font-size: 0.85rem; color: var(--text2); line-height: 1.65; margin-bottom: 14px; }
+    .ai-models { display: flex; flex-wrap: wrap; gap: 6px; }
+    .model-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem; padding: 3px 10px; border-radius: 6px;
+      background: var(--card2); border: 1px solid var(--border); color: var(--text2);
+    }
+    .model-tag.primary { border-color: rgba(124,58,237,0.4); color: var(--purple2); background: rgba(124,58,237,0.08); }
+
+    /* ── SKILLS ── */
+    .skills-group { margin-bottom: 36px; }
+    .skills-group-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--text3); margin-bottom: 14px;
+    }
+    .skills-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 8px 14px;
+      font-size: 0.83rem; font-weight: 500; color: var(--text2);
+      transition: all 0.2s;
+    }
+    .skill-chip:hover { border-color: var(--purple); color: var(--text); transform: translateY(-1px); }
+    .skill-chip img { width: 16px; height: 16px; object-fit: contain; }
+
+    /* ── PROJECTS ── */
+    .proj-section { background: var(--bg2); }
+    .proj-grid { display: flex; flex-direction: column; gap: 20px; }
+    .proj-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+      transition: all 0.3s; position: relative; overflow: hidden;
+    }
+    .proj-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+      border-radius: 4px 0 0 4px;
+    }
+    .proj-card.c1::before { background: var(--purple); }
+    .proj-card.c2::before { background: var(--green); }
+    .proj-card.c3::before { background: var(--gold); }
+    .proj-card.c4::before { background: var(--red); }
+    .proj-card:hover { border-color: rgba(124,58,237,0.25); transform: translateX(4px); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+
+    .proj-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; gap: 12px; flex-wrap: wrap; }
+    .proj-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.5px; }
+    .proj-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem; padding: 4px 10px; border-radius: 100px;
+      text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
+    }
+    .badge-ai { background: rgba(124,58,237,0.15); color: var(--purple2); border: 1px solid rgba(124,58,237,0.25); }
+    .badge-sec { background: rgba(16,185,129,0.1); color: var(--green); border: 1px solid rgba(16,185,129,0.2); }
+    .badge-fin { background: rgba(245,158,11,0.1); color: var(--gold); border: 1px solid rgba(245,158,11,0.2); }
+    .badge-live { background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.3); }
+
+    .proj-desc { color: var(--text2); font-size: 0.88rem; line-height: 1.7; margin-bottom: 16px; }
+    .proj-highlights { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .proj-hl {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; color: var(--text3);
+    }
+    .proj-hl::before { content: '→'; color: var(--purple2); }
+    .proj-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .tech-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem; padding: 3px 10px; border-radius: 6px;
+      background: var(--bg2); border: 1px solid var(--border); color: var(--text3);
+    }
+    .proj-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .proj-btn-primary {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--purple); color: #fff;
+      padding: 8px 18px; border-radius: 8px; font-size: 0.82rem; font-weight: 600;
+      transition: all 0.2s;
+    }
+    .proj-btn-primary:hover { background: var(--purple2); }
+    .proj-btn-ghost {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--border); color: var(--text2);
+      padding: 8px 18px; border-radius: 8px; font-size: 0.82rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .proj-btn-ghost:hover { border-color: var(--purple); color: var(--text); }
+
+    /* ── FINANCE ── */
+    .finance-header {
+      background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(124,58,237,0.05));
+      border: 1px solid rgba(245,158,11,0.15);
+      border-radius: 16px; padding: 24px 28px; margin-bottom: 28px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .finance-icon { font-size: 2rem; }
+    .finance-header-text h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1rem; color: var(--gold); }
+    .finance-header-text p { font-size: 0.85rem; color: var(--text2); margin-top: 4px; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+    .contact-inner { text-align: center; max-width: 540px; margin: 0 auto; }
+    .contact-inner .section-heading { margin-bottom: 12px; }
+    .contact-inner p { color: var(--text2); margin-bottom: 32px; font-size: 0.95rem; }
+    .contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border); color: var(--text2);
+      padding: 11px 20px; border-radius: 10px; font-size: 0.88rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--purple); color: var(--text); background: var(--glow-p); }
+    .contact-link img { width: 16px; height: 16px; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 24px; text-align: center;
+      color: var(--text3); font-size: 0.78rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--text3); transition: color 0.2s; }
+    footer a:hover { color: var(--text2); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 20px; }
+      h1 { letter-spacing: -1px; }
+    }
+  </style>
 </head>
 <body>
- 
+
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">&lt;JAC /&gt;</div>
+  <div class="nav-logo">JAC <span>/&gt;</span></div>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#projects">Dev Projects</a></li>
-    <li><a href="#finance">Finance & Trading</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#ai">AI Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#finance">Finance</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <a href="mailto:josearistidescardona@gmail.com" class="nav-cta">Hire me</a>
 </nav>
- 
+
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-label">Data Analyst &amp; Full-Stack Developer</div>
-    <h1>Jose Aristides Cardona</h1>
-    <p class="hero-subtitle">
-      IT professional and Master's student in Melbourne, Australia. I build AI-powered SaaS apps, security tools, and algorithmic trading systems — combining 7+ years of finance expertise with modern software development.
-    </p>
-    <div class="hero-tags">
-      <span class="hero-tag">Python</span>
-      <span class="hero-tag">Next.js</span>
-      <span class="hero-tag">FastAPI</span>
-      <span class="hero-tag">Claude AI</span>
-      <span class="hero-tag">Network Security</span>
-      <span class="hero-tag">MQL5</span>
-      <span class="hero-tag">SQL</span>
-    </div>
-    <div class="hero-links">
-      <a href="#projects" class="btn-primary">View Projects</a>
-      <a href="https://www.linkedin.com/in/jose-aristides-cardona-510081115/" class="btn-outline" target="_blank">LinkedIn</a>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Available for new roles · Melbourne, AU</div>
+      <h1 class="hero-name">Jose Aristides<br>Cardona</h1>
+      <div class="hero-tagline">
+        <span class="tag-finance">Finance</span>
+        <span class="tag-sep">×</span>
+        <span class="tag-cyber">Cybersecurity</span>
+        <span class="tag-sep">×</span>
+        <span class="tag-ai">AI</span>
+      </div>
+      <p class="hero-desc">
+        I build <strong>AI-powered tools</strong> that solve real problems — from a live SaaS resume generator to IoT security monitors and algorithmic trading systems. 7+ years in finance gave me the analytical foundation. Now I apply it to software.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View my work</a>
+        <a href="#finance" class="btn-gold">Trading & Finance</a>
+        <a href="https://linkedin.com/in/jose-aristides-cardona-510081115/" target="_blank" class="btn-outline">LinkedIn</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num purple">7+</div>
+          <div class="stat-label">Projects built</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num gold">7yr</div>
+          <div class="stat-label">Finance background</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num green">Live</div>
+          <div class="stat-label">SaaS in production</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="scroll-indicator">SCROLL</div>
 </section>
- 
+
+<div class="divider"></div>
+
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <div class="section-header">
-      <h2>About Me</h2>
-      <div class="accent-line"></div>
-    </div>
+    <div class="section-label">// about</div>
+    <h2 class="section-heading">An unconventional path<br>into tech</h2>
     <div class="about-grid">
-      <div class="about-text">
-        <p>
-          I'm a Master's in IT student at Universal Higher Education in Melbourne, Australia. My background is unconventional — 7+ years in financial analysis and investment management before transitioning into software development and cybersecurity.
-        </p>
-        <p>
-          That combination gives me a unique edge: I build tools that solve real-world problems, not just technical exercises. From a live AI-powered resume SaaS to IoT security monitors and algorithmic trading bots running on prop firm accounts.
-        </p>
-        <p>
-          I'm fluent in Python, TypeScript, and MQL5 — and I integrate AI (Claude, Gemini) into everything I build to make it smarter and faster.
-        </p>
+      <div>
+        <div class="about-text">
+          <p>
+            I didn't start in tech. I spent 7+ years in <span class="highlight-gold">financial administration, investment management, and economic analysis</span> across Colombia and Australia. That background gave me something most developers don't have: a deep understanding of <strong>real business problems and risk</strong>.
+          </p>
+          <p>
+            When I transitioned into IT, I specialised in <span class="highlight-green">cybersecurity</span> — network security, threat detection, SIEM, and IoT monitoring. Then AI changed everything. I now integrate <span class="highlight-purple">Claude, Gemini, and GPT</span> into every system I build to make it faster, smarter, and more autonomous.
+          </p>
+          <p>
+            My edge: I don't just use AI tools — I build agents and pipelines that <strong>automate complex workflows</strong>, from parsing documents to summarising security incidents to updating resumes with natural language.
+          </p>
+        </div>
+        <div class="about-pills">
+          <span class="pill gold">Financial Analysis</span>
+          <span class="pill gold">Investment Management</span>
+          <span class="pill green">Cybersecurity</span>
+          <span class="pill green">Network Security</span>
+          <span class="pill purple">AI Agents</span>
+          <span class="pill purple">Claude API</span>
+          <span class="pill purple">Prompt Engineering</span>
+        </div>
       </div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <span class="stat-number">7+</span>
-          <div class="stat-label">Projects</div>
+      <div class="timeline">
+        <div class="tl-item purple">
+          <div class="tl-year">2024 – PRESENT</div>
+          <div class="tl-role">Master of IT (Cybersecurity)</div>
+          <div class="tl-place">Universal Higher Education · Melbourne, AU</div>
         </div>
-        <div class="stat-card">
-          <span class="stat-number">15+</span>
-          <div class="stat-label">Technologies</div>
+        <div class="tl-item green">
+          <div class="tl-year">2025 – PRESENT</div>
+          <div class="tl-role">Data Analyst</div>
+          <div class="tl-place">TELUS International · Australia</div>
         </div>
-        <div class="stat-card">
-          <span class="stat-number">Live</span>
-          <div class="stat-label">SaaS in Production</div>
+        <div class="tl-item gold">
+          <div class="tl-year">2022 – 2023</div>
+          <div class="tl-role">Financial / Accounting Assistant</div>
+          <div class="tl-place">World Investors Network · Colombia</div>
         </div>
-        <div class="stat-card">
-          <span class="stat-number">7yr</span>
-          <div class="stat-label">Finance Experience</div>
+        <div class="tl-item gold">
+          <div class="tl-year">2014 – 2021</div>
+          <div class="tl-role">Financial Data Manager & Analyst</div>
+          <div class="tl-place">CENPAROV · Jhozan Contreras · Colombia</div>
         </div>
       </div>
     </div>
   </div>
 </section>
- 
-<!-- PROJECTS -->
-<section id="projects" class="projects-section">
+
+<div class="divider"></div>
+
+<!-- AI STACK -->
+<section id="ai" class="ai-section">
   <div class="container">
-    <div class="section-header">
-      <h2>Developer Projects</h2>
-      <p>Full-stack apps, security tools, and AI-powered systems</p>
-      <div class="accent-line"></div>
-    </div>
+    <div class="section-label">// ai stack</div>
+    <h2 class="section-heading">AI tools I build with</h2>
+    <p class="section-sub">I use AI not just as a chat tool — I integrate models and agents into systems that automate real workflows.</p>
+    <div class="ai-grid">
 
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-title">ResumeAI — Live SaaS</div>
-        <span class="project-badge badge-cyber">AI + Full-Stack</span>
+      <div class="ai-card claude">
+        <div class="ai-card-header">
+          <div class="ai-logo">
+            <img src="https://cdn.simpleicons.org/anthropic/d97706" alt="Anthropic" />
+          </div>
+          <div>
+            <div class="ai-name">Claude</div>
+            <div class="ai-provider">Anthropic — Primary AI</div>
+          </div>
+        </div>
+        <p class="ai-desc">My go-to model for complex reasoning, code generation, and document processing. I use Claude to build agents that parse resumes, update profiles via natural language, and automate IT workflows via the Anthropic SDK and MCP protocol.</p>
+        <div class="ai-models">
+          <span class="model-tag primary">claude-sonnet-4-6</span>
+          <span class="model-tag primary">claude-opus-4</span>
+          <span class="model-tag">Anthropic SDK</span>
+          <span class="model-tag">MCP</span>
+          <span class="model-tag">Agents</span>
+        </div>
       </div>
-      <p class="project-desc">
-        AI-powered resume generator SaaS. Upload your existing PDF or DOCX and Claude AI parses it into a structured profile automatically. Update your resume with natural language ("I got promoted"), import your LinkedIn data, and generate polished PDF or DOCX resumes in one click. Built from scratch and deployed to production.
-      </p>
-      <div class="project-highlights">
-        <div class="highlight"><div class="highlight-dot"></div>Live at resumeai-umber-zeta.vercel.app</div>
-        <div class="highlight"><div class="highlight-dot"></div>Claude Sonnet AI parses any resume in &lt;30 seconds</div>
-        <div class="highlight"><div class="highlight-dot"></div>Playwright headless Chromium for PDF generation</div>
-        <div class="highlight"><div class="highlight-dot"></div>Clerk auth, Railway backend, Vercel frontend</div>
-      </div>
-      <div class="project-tech">
-        <span class="tech-tag">Next.js 16</span>
-        <span class="tech-tag">FastAPI</span>
-        <span class="tech-tag">Claude AI</span>
-        <span class="tech-tag">TypeScript</span>
-        <span class="tech-tag">Playwright</span>
-        <span class="tech-tag">Clerk</span>
-        <span class="tech-tag">Railway</span>
-        <span class="tech-tag">Vercel</span>
-      </div>
-      <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
-        <a href="projects/resumeai.html" class="btn-primary" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">View Project →</a>
-        <a href="https://resumeai-umber-zeta.vercel.app" target="_blank" class="btn-outline" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">Live Demo</a>
-        <a href="https://github.com/josecardona1994/resumeai" target="_blank" class="btn-outline" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">GitHub</a>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-title">AegisPay — IoT Security Monitor</div>
-        <span class="project-badge badge-data">Cybersecurity</span>
+      <div class="ai-card gemini">
+        <div class="ai-card-header">
+          <div class="ai-logo">
+            <img src="https://cdn.simpleicons.org/googlegemini/4285f4" alt="Gemini" />
+          </div>
+          <div>
+            <div class="ai-name">Gemini</div>
+            <div class="ai-provider">Google DeepMind</div>
+          </div>
+        </div>
+        <p class="ai-desc">I use Gemini for multimodal tasks and Google ecosystem integrations. Particularly useful for long-context analysis and document understanding. Also experimenting with NotebookLM for knowledge base workflows.</p>
+        <div class="ai-models">
+          <span class="model-tag">Gemini 2.5 Pro</span>
+          <span class="model-tag">Gemini Flash</span>
+          <span class="model-tag">NotebookLM</span>
+          <span class="model-tag">Vertex AI</span>
+        </div>
       </div>
-      <p class="project-desc">
-        Real-time network security monitoring tool for IoT payment infrastructure. Detects ARP spoofing attacks, identifies rogue devices, and sends automated alerts across a simulated enterprise network topology. Built and demoed as part of a network security assessment.
-      </p>
-      <div class="project-highlights">
-        <div class="highlight"><div class="highlight-dot"></div>Real-time ARP spoofing detection</div>
-        <div class="highlight"><div class="highlight-dot"></div>Rogue device identification &amp; alerting</div>
-        <div class="highlight"><div class="highlight-dot"></div>Simulated enterprise IoT payment network</div>
-        <div class="highlight"><div class="highlight-dot"></div>Automated mitigation recommendations</div>
-      </div>
-      <div class="project-tech">
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">Kali Linux</span>
-        <span class="tech-tag">ARP Detection</span>
-        <span class="tech-tag">Network Security</span>
-        <span class="tech-tag">Scapy</span>
-      </div>
-      <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
-        <a href="projects/aegispay.html" class="btn-primary" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">View Project →</a>
-        <a href="https://github.com/josecardona1994/aegispay" target="_blank" class="btn-outline" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">GitHub</a>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-title">SolarShield — Attack Detection System</div>
-        <span class="project-badge badge-infra">Threat Detection</span>
+      <div class="ai-card openai">
+        <div class="ai-card-header">
+          <div class="ai-logo">
+            <img src="https://cdn.simpleicons.org/openai/10a37f" alt="OpenAI" />
+          </div>
+          <div>
+            <div class="ai-name">OpenAI</div>
+            <div class="ai-provider">GPT Models</div>
+          </div>
+        </div>
+        <p class="ai-desc">I use GPT-4o for tasks requiring broad general knowledge and for prototyping AI features before optimising with Claude. Also use the OpenAI API for embeddings and function calling in data pipelines.</p>
+        <div class="ai-models">
+          <span class="model-tag">GPT-4o</span>
+          <span class="model-tag">GPT-4 Turbo</span>
+          <span class="model-tag">Embeddings</span>
+          <span class="model-tag">Function Calling</span>
+        </div>
       </div>
-      <p class="project-desc">
-        Detection and response system for SolarWinds-style supply chain attacks. Designed custom SIEM rules, log analysis pipelines, and forensic indicators of compromise to identify malicious backdoor behaviour in enterprise environments. Built for the IT5011 security assessment.
-      </p>
-      <div class="project-highlights">
-        <div class="highlight"><div class="highlight-dot"></div>Custom SIEM rules for supply chain attack patterns</div>
-        <div class="highlight"><div class="highlight-dot"></div>Log analysis pipeline for forensic investigation</div>
-        <div class="highlight"><div class="highlight-dot"></div>Backdoor behaviour indicators &amp; IOCs</div>
-        <div class="highlight"><div class="highlight-dot"></div>Incident response playbook</div>
-      </div>
-      <div class="project-tech">
-        <span class="tech-tag">Python</span>
-        <span class="tech-tag">Splunk</span>
-        <span class="tech-tag">SIEM</span>
-        <span class="tech-tag">PowerShell</span>
-        <span class="tech-tag">Threat Detection</span>
-      </div>
-      <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
-        <a href="projects/solarshield.html" class="btn-primary" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">View Project →</a>
-        <a href="https://github.com/josecardona1994/solarshield" target="_blank" class="btn-outline" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">GitHub</a>
-      </div>
-    </div>
 
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-title">Secure Bridge — VDP Platform</div>
-        <span class="project-badge badge-network">Full-Stack · Security</span>
-      </div>
-      <p class="project-desc">
-        Full-stack Vulnerability Disclosure Platform enabling organisations to receive, triage, and manage security reports from external researchers. Co-developed as a capstone project with system architecture design and live stakeholder presentation. Milestone 7 delivered on schedule.
-      </p>
-      <div class="project-highlights">
-        <div class="highlight"><div class="highlight-dot"></div>End-to-end vulnerability report submission &amp; triage</div>
-        <div class="highlight"><div class="highlight-dot"></div>Role-based access control for researchers &amp; admins</div>
-        <div class="highlight"><div class="highlight-dot"></div>Live stakeholder presentation &amp; system architecture</div>
-        <div class="highlight"><div class="highlight-dot"></div>Capstone project — Universal Higher Education</div>
-      </div>
-      <div class="project-tech">
-        <span class="tech-tag">React</span>
-        <span class="tech-tag">Node.js</span>
-        <span class="tech-tag">Full-Stack</span>
-        <span class="tech-tag">Security</span>
-        <span class="tech-tag">VDP</span>
-      </div>
-      <div style="margin-top:1rem;">
-        <a href="https://github.com/josecardona1994/secure-bridge" target="_blank" class="btn-outline" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">GitHub</a>
-      </div>
     </div>
-
   </div>
 </section>
 
-<!-- FINANCE & TRADING -->
-<section id="finance">
-  <div class="container">
-    <div class="section-header">
-      <h2>Finance &amp; Trading</h2>
-      <p>7+ years in financial analysis combined with algorithmic trading systems</p>
-      <div class="accent-line"></div>
-    </div>
+<div class="divider"></div>
 
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-title">GoldScalper EA — Live Trading Bot</div>
-        <span class="project-badge badge-cyber">Active · XAUUSD</span>
-      </div>
-      <p class="project-desc">
-        Fully automated Expert Advisor for XAUUSD (Gold) on MetaTrader 5. Uses EMA crossover (5/13) combined with an ADX trend filter for high-probability entry signals. Features dynamic risk management, session filters, and prop firm compliance controls. Currently running live on a BlackBull Markets account.
-      </p>
-      <div class="project-highlights">
-        <div class="highlight"><div class="highlight-dot"></div>Live on BlackBull Markets account</div>
-        <div class="highlight"><div class="highlight-dot"></div>EMA 5/13 crossover + ADX trend filter</div>
-        <div class="highlight"><div class="highlight-dot"></div>Dynamic lot sizing &amp; drawdown protection</div>
-        <div class="highlight"><div class="highlight-dot"></div>Session-based filters for optimal entry windows</div>
-      </div>
-      <div class="project-tech">
-        <span class="tech-tag">MQL5</span>
-        <span class="tech-tag">MetaTrader 5</span>
-        <span class="tech-tag">XAUUSD</span>
-        <span class="tech-tag">EMA</span>
-        <span class="tech-tag">ADX</span>
-        <span class="tech-tag">Risk Management</span>
-      </div>
-      <div style="margin-top:1rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
-        <a href="projects/goldscalper.html" class="btn-primary" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">View Project →</a>
-        <a href="https://github.com/josecardona1994/vp-fvg-scalper" target="_blank" class="btn-outline" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">GitHub</a>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-title">ChallengeBlitz — Prop Firm EA</div>
-        <span class="project-badge badge-data">Phase 1 · The 5%ers $25k</span>
-      </div>
-      <p class="project-desc">
-        Expert Advisor engineered specifically for The 5%ers $25,000 prop firm challenge. Implements strict maximum drawdown controls (10% limit), ADX and RSI signal filters, Asian session timing, and a $1,000 daily profit target. Backtested at +92% return. First live trade: +$1,000.05.
-      </p>
-      <div class="project-highlights">
-        <div class="highlight"><div class="highlight-dot"></div>Backtest: +92% return, 10% max drawdown</div>
-        <div class="highlight"><div class="highlight-dot"></div>First live trade: +$1,000.05 profit</div>
-        <div class="highlight"><div class="highlight-dot"></div>Prop firm compliance: hard DD limits &amp; risk controls</div>
-        <div class="highlight"><div class="highlight-dot"></div>ADX + RSI dual filter for signal quality</div>
-      </div>
-      <div class="project-tech">
-        <span class="tech-tag">MQL5</span>
-        <span class="tech-tag">MetaTrader 5</span>
-        <span class="tech-tag">Prop Firm</span>
-        <span class="tech-tag">ADX</span>
-        <span class="tech-tag">RSI</span>
-        <span class="tech-tag">XAUUSD</span>
-      </div>
-      <div style="margin-top:1rem;">
-        <a href="https://github.com/josecardona1994/vp-fvg-scalper" target="_blank" class="btn-outline" style="padding:0.5rem 1.1rem;border-radius:8px;font-size:0.85rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;">GitHub</a>
-      </div>
-    </div>
-
-  </div>
-</section>
- 
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <div class="section-header">
-      <h2>Technical Skills</h2>
-      <div class="accent-line"></div>
+    <div class="section-label">// skills</div>
+    <h2 class="section-heading">Tech stack</h2>
+
+    <div class="skills-group">
+      <div class="skills-group-label">Languages & Frameworks</div>
+      <div class="skills-row">
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/python/3776AB" alt=""/>Python</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt=""/>TypeScript</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/javascript/F7DF1E" alt=""/>JavaScript</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt=""/>Next.js</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/react/61DAFB" alt=""/>React</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/fastapi/009688" alt=""/>FastAPI</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/metabase/509EE3" alt=""/>MQL5</div>
+      </div>
     </div>
-    <div class="skills-grid">
-      <div class="skill-category">
-        <h3>Development</h3>
-        <div class="skill-items">
-          <span class="skill-item">Python</span>
-          <span class="skill-item">TypeScript</span>
-          <span class="skill-item">Next.js</span>
-          <span class="skill-item">FastAPI</span>
-          <span class="skill-item">React</span>
-          <span class="skill-item">SQL</span>
-          <span class="skill-item">MQL5</span>
-          <span class="skill-item">Bash</span>
+
+    <div class="skills-group">
+      <div class="skills-group-label">AI & Data</div>
+      <div class="skills-row">
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/anthropic/d97706" alt=""/>Claude API</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/openai/10a37f" alt=""/>OpenAI API</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/googlegemini/4285f4" alt=""/>Gemini</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/postgresql/4169E1" alt=""/>SQL</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/powerbi/F2C811" alt=""/>Power BI</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/pandas/150458" alt=""/>Pandas</div>
+      </div>
+    </div>
+
+    <div class="skills-group">
+      <div class="skills-group-label">Security & Infrastructure</div>
+      <div class="skills-row">
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/kalilinux/557C94" alt=""/>Kali Linux</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/linux/FCC624" alt=""/>Linux</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/splunk/ffffff" alt=""/>Splunk</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/docker/2496ED" alt=""/>Docker</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/vercel/ffffff" alt=""/>Vercel</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/railway/ffffff" alt=""/>Railway</div>
+        <div class="skill-chip"><img src="https://cdn.simpleicons.org/git/F05032" alt=""/>Git</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects" class="proj-section">
+  <div class="container">
+    <div class="section-label">// developer projects</div>
+    <h2 class="section-heading">What I've built</h2>
+    <p class="section-sub">Full-stack apps, security tools, and AI-powered systems — all shipped to production or presented live.</p>
+    <div class="proj-grid">
+
+      <div class="proj-card c1">
+        <div class="proj-header">
+          <div class="proj-title">ResumeAI</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="proj-badge badge-ai">AI · Full-Stack</span>
+            <span class="proj-badge badge-live">● Live</span>
+          </div>
+        </div>
+        <p class="proj-desc">AI-powered resume SaaS — upload your existing PDF or DOCX and Claude parses it into a structured profile automatically. Update with natural language, import from LinkedIn, generate polished PDF/DOCX in one click. Built from scratch, deployed to production.</p>
+        <div class="proj-highlights">
+          <span class="proj-hl">Claude Sonnet parses any resume in &lt;30s</span>
+          <span class="proj-hl">Natural language profile updates via AI chat</span>
+          <span class="proj-hl">Playwright headless Chromium for PDF generation</span>
+          <span class="proj-hl">Clerk auth · Railway backend · Vercel frontend</span>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">Next.js 16</span><span class="tech-tag">FastAPI</span><span class="tech-tag">Claude AI</span>
+          <span class="tech-tag">TypeScript</span><span class="tech-tag">Playwright</span><span class="tech-tag">Clerk</span>
+        </div>
+        <div class="proj-actions">
+          <a href="projects/resumeai.html" class="proj-btn-primary">View Project →</a>
+          <a href="https://resumeai-umber-zeta.vercel.app" target="_blank" class="proj-btn-ghost">Live Demo</a>
+          <a href="https://github.com/josecardona1994/resumeai" target="_blank" class="proj-btn-ghost">GitHub</a>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Data & AI</h3>
-        <div class="skill-items">
-          <span class="skill-item">Claude AI</span>
-          <span class="skill-item">Power BI</span>
-          <span class="skill-item">Pandas</span>
-          <span class="skill-item">ETL Pipelines</span>
-          <span class="skill-item">Playwright</span>
-          <span class="skill-item">pdfplumber</span>
-          <span class="skill-item">Jupyter</span>
+
+      <div class="proj-card c2">
+        <div class="proj-header">
+          <div class="proj-title">AegisPay</div>
+          <span class="proj-badge badge-sec">IoT · Network Security</span>
+        </div>
+        <p class="proj-desc">Real-time network security monitor for IoT payment infrastructure. Detects ARP spoofing, rogue devices, and man-in-the-middle attacks across a simulated enterprise network. Built and demoed for a network security assessment.</p>
+        <div class="proj-highlights">
+          <span class="proj-hl">Real-time ARP spoofing detection</span>
+          <span class="proj-hl">Rogue device identification &amp; automated alerts</span>
+          <span class="proj-hl">Simulated enterprise IoT topology</span>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">Python</span><span class="tech-tag">Scapy</span><span class="tech-tag">Kali Linux</span><span class="tech-tag">Network Security</span>
+        </div>
+        <div class="proj-actions">
+          <a href="projects/aegispay.html" class="proj-btn-primary">View Project →</a>
+          <a href="https://github.com/josecardona1994/aegispay" target="_blank" class="proj-btn-ghost">GitHub</a>
         </div>
       </div>
-      <div class="skill-category">
-        <h3>Security & Infrastructure</h3>
-        <div class="skill-items">
-          <span class="skill-item">Kali Linux</span>
-          <span class="skill-item">Splunk SIEM</span>
-          <span class="skill-item">ARP Detection</span>
-          <span class="skill-item">Network Security</span>
-          <span class="skill-item">Docker</span>
-          <span class="skill-item">Railway</span>
-          <span class="skill-item">Vercel</span>
-          <span class="skill-item">Git</span>
+
+      <div class="proj-card c3">
+        <div class="proj-header">
+          <div class="proj-title">SolarShield</div>
+          <span class="proj-badge badge-sec">SIEM · Threat Detection</span>
+        </div>
+        <p class="proj-desc">Detection and response system for SolarWinds-style supply chain attacks. Designed custom SIEM rules, log analysis pipelines, and forensic IOC indicators to identify malicious backdoor behaviour in enterprise environments.</p>
+        <div class="proj-highlights">
+          <span class="proj-hl">Custom SIEM rules for SUNBURST backdoor patterns</span>
+          <span class="proj-hl">Forensic log analysis pipeline</span>
+          <span class="proj-hl">Incident response playbook</span>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">Python</span><span class="tech-tag">Splunk</span><span class="tech-tag">SIEM</span><span class="tech-tag">PowerShell</span>
+        </div>
+        <div class="proj-actions">
+          <a href="projects/solarshield.html" class="proj-btn-primary">View Project →</a>
+          <a href="https://github.com/josecardona1994/solarshield" target="_blank" class="proj-btn-ghost">GitHub</a>
         </div>
       </div>
+
+      <div class="proj-card c4">
+        <div class="proj-header">
+          <div class="proj-title">Secure Bridge</div>
+          <span class="proj-badge badge-sec">Full-Stack · VDP</span>
+        </div>
+        <p class="proj-desc">Full-stack Vulnerability Disclosure Platform enabling organisations to receive, triage, and manage security reports from external researchers. Capstone project — system architecture design and live stakeholder presentation.</p>
+        <div class="proj-highlights">
+          <span class="proj-hl">End-to-end vulnerability report submission &amp; triage</span>
+          <span class="proj-hl">Role-based access control</span>
+          <span class="proj-hl">Live stakeholder presentation delivered</span>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">React</span><span class="tech-tag">Node.js</span><span class="tech-tag">Security</span><span class="tech-tag">VDP</span>
+        </div>
+        <div class="proj-actions">
+          <a href="https://github.com/josecardona1994/secure-bridge" target="_blank" class="proj-btn-ghost">GitHub</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
- 
+
+<div class="divider"></div>
+
+<!-- FINANCE -->
+<section id="finance">
+  <div class="container">
+    <div class="section-label">// finance & trading</div>
+    <h2 class="section-heading">The finance side</h2>
+    <p class="section-sub">7+ years of financial experience translated into algorithmic systems — where risk management meets code.</p>
+
+    <div class="finance-header">
+      <div class="finance-icon">📈</div>
+      <div class="finance-header-text">
+        <h3>7+ Years in Financial Analysis & Investment Management</h3>
+        <p>Colombia → Australia · Financial administration, ETL pipelines for reporting, portfolio management, regulatory compliance, investment advisory</p>
+      </div>
+    </div>
+
+    <div class="proj-grid">
+
+      <div class="proj-card c1">
+        <div class="proj-header">
+          <div class="proj-title">GoldScalper EA</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="proj-badge badge-fin">Algorithmic Trading</span>
+            <span class="proj-badge badge-live">● Live Account</span>
+          </div>
+        </div>
+        <p class="proj-desc">Fully automated Expert Advisor for XAUUSD on MetaTrader 5. EMA crossover (5/13) + ADX trend filter. Running live on a BlackBull Markets account with dynamic risk management, session filters, and hard drawdown limits.</p>
+        <div class="proj-highlights">
+          <span class="proj-hl">Live on BlackBull Markets account</span>
+          <span class="proj-hl">EMA 5/13 + ADX dual filter strategy</span>
+          <span class="proj-hl">Dynamic lot sizing &amp; drawdown protection</span>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">MQL5</span><span class="tech-tag">MetaTrader 5</span><span class="tech-tag">XAUUSD</span><span class="tech-tag">Risk Management</span>
+        </div>
+        <div class="proj-actions">
+          <a href="projects/goldscalper.html" class="proj-btn-primary">View Project →</a>
+          <a href="https://github.com/josecardona1994/vp-fvg-scalper" target="_blank" class="proj-btn-ghost">GitHub</a>
+        </div>
+      </div>
+
+      <div class="proj-card c3">
+        <div class="proj-header">
+          <div class="proj-title">ChallengeBlitz</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="proj-badge badge-fin">Prop Firm EA</span>
+            <span class="proj-badge badge-live">● Phase 1</span>
+          </div>
+        </div>
+        <p class="proj-desc">Expert Advisor engineered for The 5%ers $25,000 prop firm challenge. Strict 10% max drawdown, ADX + RSI filters, Asian session timing, $1,000 daily target. Backtest: +92%. First live trade: +$1,000.05.</p>
+        <div class="proj-highlights">
+          <span class="proj-hl">Backtest: +92% return, &lt;10% drawdown</span>
+          <span class="proj-hl">First live trade: +$1,000.05</span>
+          <span class="proj-hl">Prop firm compliance: hard risk controls</span>
+        </div>
+        <div class="proj-tech">
+          <span class="tech-tag">MQL5</span><span class="tech-tag">Prop Firm</span><span class="tech-tag">ADX</span><span class="tech-tag">RSI</span>
+        </div>
+        <div class="proj-actions">
+          <a href="https://github.com/josecardona1994/vp-fvg-scalper" target="_blank" class="proj-btn-ghost">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- CONTACT -->
 <section id="contact" class="contact-section">
   <div class="container">
-    <div class="section-header">
-      <h2>Get In Touch</h2>
-      <div class="accent-line"></div>
-    </div>
-    <div class="contact-content">
-      <p>
-        I'm actively seeking roles in data analysis, IT, or full-stack development in Melbourne, Australia. Open to full-time positions and collaboration.
-      </p>
+    <div class="contact-inner">
+      <div class="section-label" style="text-align:center">// contact</div>
+      <h2 class="section-heading">Let's work together</h2>
+      <p>Open to roles in data analysis, cybersecurity, full-stack development, or AI integration. Based in Melbourne, AU.</p>
       <div class="contact-links">
         <a href="mailto:josearistidescardona@gmail.com" class="contact-link">
-          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Email
         </a>
-        <a href="https://www.linkedin.com/in/jose-aristides-cardona-510081115/" class="contact-link" target="_blank">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
+        <a href="https://linkedin.com/in/jose-aristides-cardona-510081115/" target="_blank" class="contact-link">
+          <img src="https://cdn.simpleicons.org/linkedin/94a3b8" alt="" /> LinkedIn
         </a>
-        <a href="https://github.com/josecardona1994" class="contact-link" target="_blank">
-          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-          GitHub
+        <a href="https://github.com/josecardona1994" target="_blank" class="contact-link">
+          <img src="https://cdn.simpleicons.org/github/94a3b8" alt="" /> GitHub
         </a>
       </div>
     </div>
   </div>
 </section>
- 
+
 <footer>
-  <p>&copy; 2026 Jose Aristides Cardona. Built with purpose.</p>
+  <p>Built by Jose Aristides Cardona · <a href="https://github.com/josecardona1994/Portfolio" target="_blank">View source</a></p>
 </footer>
- 
+
 </body>
 </html>
